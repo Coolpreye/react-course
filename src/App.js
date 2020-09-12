@@ -1,17 +1,14 @@
 import React from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './components/MenuComponent';
-import { DISHES } from './sharedFolder/dishes';
+import Main from './components/MainComponent';
+import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
     <React.Fragment>
-      <Navbar dark color="primary">
-        <div className="container">
-          <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-        </div>
-      </Navbar>
-      <Menu dishes={DISHES} />
+      <Router>
+        <Main />
+      </Router>
     </React.Fragment>
   );
 }
