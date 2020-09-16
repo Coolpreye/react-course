@@ -1,8 +1,15 @@
-import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import React, { useState } from 'react';
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentForm';
 
 const DishDetail = ({ dish, comments }) => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false); 
+    
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    }
 
     const RenderDish = ({ dish }) => {
         if (dish != null)
@@ -41,6 +48,7 @@ const DishDetail = ({ dish, comments }) => {
                             )
                         })}
                     </ul>
+                    <Button onClick={toggleModal} outline><span className="fa fa-pencil fa-lg"></span> Submit Comment</Button>
                 </div>
             )
         } else {
@@ -70,6 +78,7 @@ const DishDetail = ({ dish, comments }) => {
                         <RenderComments comments={comments} />
                     </div>
                 </div>
+                <CommentForm toggleModal={toggleModal} isModalOpen={isModalOpen} />
         </div>
     );
 }
